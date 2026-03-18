@@ -48,18 +48,27 @@
         ::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #0f766e; }
 
-        /* Testimonial Slider Styles */
+        /* Testimonial Slider Styles with Native Swipe */
         .testimonial-container {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .testimonial-container::-webkit-scrollbar {
+            display: none;
         }
         .testimonial-item {
             min-width: 100%;
             padding: 0 1rem;
+            scroll-snap-align: center;
         }
         @media (min-width: 768px) {
             .testimonial-item {
                 min-width: 33.333%;
+                scroll-snap-align: start;
             }
         }
     </style>
@@ -140,7 +149,7 @@
             <div class="container mx-auto px-4 z-10 relative">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="fade-in">
-                        <span class="inline-block bg-white/20 text-white text-sm font-semibold px-4 py-1 rounded-full mb-6">Pusat Konveksi Muslimah No. 1</span>
+                        <span class="inline-block bg-white/20 text-white text-sm font-semibold px-4 py-1 rounded-full mb-6 text-center">Pusat Konveksi Muslimah No. 1</span>
                         <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
                             Spesialis Pakaian Olahraga <span class="text-secondary">Muslimah Printing Custom</span>
                         </h1>
@@ -199,7 +208,6 @@
         <!-- ===== Section: Keunggulan & Profil Perusahaan & Galeri Produksi ===== -->
         <section id="keunggulan" class="py-24 bg-gray-100">
             <div class="container mx-auto px-4">
-                <!-- 1. Tiga Poin Keunggulan Utama -->
                 <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Keunggulan Layanan KOC</h2>
                     <p class="text-lg text-gray-600">Alasan mengapa ribuan komunitas memercayakan seragamnya kepada kami.</p>
@@ -267,14 +275,14 @@
             </div>
         </section>
 
-        <!-- ===== Testimoni Section (AUTOMATIC SLIDER) ===== -->
+        <!-- ===== Testimoni Section (AUTOMATIC SLIDER & MANUAL SWIPE) ===== -->
         <section id="testimoni" class="py-24 bg-white overflow-hidden">
             <div class="container mx-auto px-4">
                 <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Suara Pelanggan</h2>
                     <p class="text-lg text-gray-600">Kepuasan Anda adalah bukti nyata kualitas kami.</p>
                 </div>
-                <div class="relative overflow-hidden">
+                <div class="relative">
                     <div id="testimonial-slider" class="testimonial-container">
                         <div class="testimonial-item">
                             <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 h-full">
@@ -312,14 +320,14 @@
         </section>
 
         <!-- ===== Cara Pesan ===== -->
-        <section id="cara-pesan" class="py-24 bg-gray-100">
-            <div class="container mx-auto px-4 text-center">
-                <div class="mb-16 fade-in"><h2 class="text-3xl md:text-4xl font-extrabold">Cara Pemesanan</h2></div>
+        <section id="cara-pesan" class="py-24 bg-gray-100 text-center">
+            <div class="container mx-auto px-4">
+                <div class="mb-16 fade-in"><h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Cara Pemesanan</h2></div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="text-center group"><div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl font-black mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition shadow-md border-2 border-primary/20">1</div><h4 class="text-xl font-bold mb-3">Konsultasi</h4><p class="text-gray-600 text-sm leading-relaxed">Diskusikan model, material, & desain via WhatsApp.</p></div>
-                    <div class="text-center group"><div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl font-black mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition shadow-md border-2 border-primary/20">2</div><h4 class="text-xl font-bold mb-3">DP & Desain</h4><p class="text-gray-600 text-sm leading-relaxed">Bayar DP 50% untuk mulai pengerjaan desain final.</p></div>
-                    <div class="text-center group"><div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl font-black mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition shadow-md border-2 border-primary/20">3</div><h4 class="text-xl font-bold mb-3">Produksi</h4><p class="text-gray-600 text-sm leading-relaxed">Proses estimasi 14-21 hari sesuai antrian.</p></div>
-                    <div class="text-center group"><div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl font-black mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition shadow-md border-2 border-primary/20">4</div><h4 class="text-xl font-bold mb-3">Kirim</h4><p class="text-gray-600 text-sm leading-relaxed">Barang dikirim setelah pelunasan dilakukan.</p></div>
+                    <div class="text-center group"><div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl font-black mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition shadow-md border-2 border-primary/20">1</div><h4 class="text-xl font-bold mb-3">Konsultasi</h4><p class="text-gray-600 text-sm">Diskusikan model & desain via WhatsApp.</p></div>
+                    <div class="text-center group"><div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl font-black mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition shadow-md border-2 border-primary/20">2</div><h4 class="text-xl font-bold mb-3">DP & Desain</h4><p class="text-gray-600 text-sm">Bayar DP 50% untuk pengerjaan desain final.</p></div>
+                    <div class="text-center group"><div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl font-black mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition shadow-md border-2 border-primary/20">3</div><h4 class="text-xl font-bold mb-3">Produksi</h4><p class="text-gray-600 text-sm">Proses estimasi 14-21 hari sesuai antrian.</p></div>
+                    <div class="text-center group"><div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl font-black mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition shadow-md border-2 border-primary/20">4</div><h4 class="text-xl font-bold mb-3">Kirim</h4><p class="text-gray-600 text-sm">Barang dikirim setelah pelunasan dilakukan.</p></div>
                 </div>
             </div>
         </section>
@@ -338,7 +346,6 @@
                         <div><label class="block text-sm font-bold mb-2">Grup / Instansi</label><input type="text" id="komunitas" required class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none" placeholder="Cth: Persit Cabang X"></div>
                         <div><label class="block text-sm font-bold mb-2">No. WhatsApp</label><input type="tel" id="hp" required class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none" placeholder="0812..."></div>
                         
-                        <!-- Model Pesanan -->
                         <div class="flex flex-col space-y-2">
                             <label class="block text-sm font-bold">Model Pesanan</label>
                             <select id="produk" required class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none" onchange="toggleCustomField('produk', 'produk_lainnya_container')">
@@ -357,7 +364,6 @@
                             </div>
                         </div>
 
-                        <!-- Material Bahan -->
                         <div class="flex flex-col space-y-2">
                             <label class="block text-sm font-bold">Material Bahan</label>
                             <select id="material" required class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none" onchange="toggleCustomField('material', 'material_lainnya_container')">
@@ -374,122 +380,77 @@
 
                         <div><label class="block text-sm font-bold mb-2">Quantity (Jumlah)</label><input type="number" id="jumlah" required class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none" placeholder="Jumlah Pcs"></div>
                         <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Data Sizepack</label><textarea id="sizepack" rows="2" class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none" placeholder="Cth: S:5, M:10, L:10, XL:5"></textarea></div>
-                        <div><label class="block text-sm font-bold mb-2">Deadline (Tanggal Pakai)</label><input type="date" id="tanggal" required class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none"></div>
+                        <div><label class="block text-sm font-bold mb-2">Deadline</label><input type="date" id="tanggal" required class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none"></div>
                         <div><label class="block text-sm font-bold mb-2">Kota Pengiriman</label><input type="text" id="alamat" class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none" placeholder="Cth: Bandung"></div>
-                        <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Upload Referensi Desain</label><input type="file" id="desain" accept="image/*" class="w-full px-5 py-3 border-2 border-dashed border-gray-200 rounded-2xl text-sm file:bg-primary file:text-white file:border-0 file:rounded-lg file:px-4 file:py-1 file:mr-4"></div>
-                        <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Catatan Pesanan</label><textarea id="catatan" rows="2" class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none" placeholder="Detail logo, penambahan saku, dll."></textarea></div>
-                        <div class="md:col-span-2 mt-4"><button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-black py-5 rounded-2xl text-lg transition shadow-xl flex items-center justify-center space-x-3"><ion-icon name="logo-whatsapp" class="text-2xl"></ion-icon><span>Kirim Penawaran ke WhatsApp</span></button></div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-bold mb-2">Upload Referensi Desain</label>
+                            <input type="file" id="desain" accept="image/png, image/jpeg" class="w-full px-5 py-3 border-2 border-dashed rounded-2xl text-sm">
+                        </div>
+                        <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Catatan</label><textarea id="catatan" rows="2" class="w-full px-5 py-3 rounded-2xl bg-gray-50 border border-gray-200 focus:border-primary outline-none"></textarea></div>
+                        <div class="md:col-span-2 mt-4"><button type="submit" class="w-full bg-primary text-white font-black py-5 rounded-2xl text-lg shadow-xl flex items-center justify-center space-x-3 transition hover:bg-primary-dark"><ion-icon name="logo-whatsapp" class="text-2xl"></ion-icon><span>Kirim Penawaran ke WhatsApp</span></button></div>
                     </form>
                 </div>
             </div>
-            <div class="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
         </section>
 
         <!-- ===== FAQ Section ===== -->
         <section class="py-24 bg-white">
             <div class="container mx-auto px-4 max-w-4xl text-center">
-                <div class="mb-16 fade-in">
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Tanya Jawab (FAQ)</h2>
-                    <p class="text-lg text-gray-600">Semua yang perlu Anda ketahui tentang pemesanan di KOC.</p>
-                </div>
+                <div class="mb-16 fade-in"><h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Tanya Jawab (FAQ)</h2><p class="text-gray-600">Info lengkap pemesanan di KOC.</p></div>
                 <div class="space-y-4 text-left">
-                    <div class="p-6 rounded-2xl border border-gray-100 bg-gray-50 group hover:border-primary transition duration-300">
-                        <h4 class="font-bold text-lg text-primary-dark mb-2">Berapa minimal ordernya?</h4>
-                        <p class="text-gray-600">Minimal order kami sangat fleksibel, yaitu mulai dari **1 lusin (12 pcs)** per desain. Cocok untuk komunitas kecil hingga grup besar.</p>
-                    </div>
-                    <div class="p-6 rounded-2xl border border-gray-100 bg-gray-50 group hover:border-primary transition duration-300">
-                        <h4 class="font-bold text-lg text-primary-dark mb-2">Bahan apa yang paling direkomendasikan?</h4>
-                        <p class="text-gray-600">Untuk muslimah, kami merekomendasikan **Dryfit** atau **Lakos Pique** premium. Bahannya jatuh, tidak kaku, sangat adem, dan menyerap keringat maksimal.</p>
-                    </div>
-                    <div class="p-6 rounded-2xl border border-gray-100 bg-gray-50 group hover:border-primary transition duration-300">
-                        <h4 class="font-bold text-lg text-primary-dark mb-2">Apakah desain dibantu buatkan?</h4>
-                        <p class="text-gray-600">Tentu! Tim desainer profesional kami akan membantu membuatkan **mockup desain 3D gratis** berdasarkan referensi atau ide Anda.</p>
-                    </div>
-                    <div class="p-6 rounded-2xl border border-gray-100 bg-gray-50 group hover:border-primary transition duration-300">
-                        <h4 class="font-bold text-lg text-primary-dark mb-2">Berapa lama proses produksinya?</h4>
-                        <p class="text-gray-600">Estimasi pengerjaan standar adalah **14-21 hari kerja** setelah desain disetujui dan DP dibayarkan.</p>
-                    </div>
-                    <div class="p-6 rounded-2xl border border-gray-100 bg-gray-50 group hover:border-primary transition duration-300">
-                        <h4 class="font-bold text-lg text-primary-dark mb-2">Apakah ada garansi jika hasil tidak sesuai?</h4>
-                        <p class="text-gray-600">Kepuasan pelanggan adalah prioritas kami. Kami memberikan **Garansi Kepuasan** jika terdapat cacat produksi atau ketidaksesuaian desain dari pihak kami.</p>
-                    </div>
+                    <div class="p-6 rounded-2xl border border-gray-100 bg-gray-50 group hover:border-primary transition duration-300"><h4 class="font-bold text-lg text-primary-dark mb-2">Berapa minimal ordernya?</h4><p class="text-gray-600">Mulai dari **1 lusin (12 pcs)** per desain.</p></div>
+                    <div class="p-6 rounded-2xl border border-gray-100 bg-gray-50 group hover:border-primary transition duration-300"><h4 class="font-bold text-lg text-primary-dark mb-2">Bahan apa yang direkomendasikan?</h4><p class="text-gray-600">Kami menyarankan **Benzema All Premium** untuk kenyamanan maksimal.</p></div>
+                    <div class="p-6 rounded-2xl border border-gray-100 bg-gray-50 group hover:border-primary transition duration-300"><h4 class="font-bold text-lg text-primary-dark mb-2">Apakah desain dibantu buatkan?</h4><p class="text-gray-600">Ya, kami berikan **mockup desain 3D gratis** untuk setiap pemesanan.</p></div>
+                    <div class="p-6 rounded-2xl border border-gray-100 bg-gray-50 group hover:border-primary transition duration-300"><h4 class="font-bold text-lg text-primary-dark mb-2">Apakah ada garansi?</h4><p class="text-gray-600">Ada garansi kepuasan untuk kesalahan produksi dari pihak kami.</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== Maps & Final Contact ===== -->
-        <section id="kontak" class="py-24 bg-gray-100 border-t border-gray-200">
-            <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div class="fade-in">
-                        <h2 class="text-3xl font-extrabold text-gray-900 mb-8 tracking-tight">Kunjungi Workshop Kami</h2>
-                        <div class="space-y-6">
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-md"><ion-icon name="location-outline" class="text-2xl"></ion-icon></div>
-                                <div><h4 class="font-bold text-lg">Alamat Workshop</h4><p class="text-gray-600 leading-relaxed">Jl. Babakan Tarogong No. 399/196 B, RT. 06 RW. 04, Kel. Babakan Tarogong, Kec. Bojongloa Kaler, Kota Bandung, Jawa Barat 40232</p></div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-whatsapp text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-md"><ion-icon name="logo-whatsapp" class="text-2xl"></ion-icon></div>
-                                <div><h4 class="font-bold text-lg">WhatsApp Admin</h4><p class="text-gray-600">0821-2909-1178 (Order & Konsultasi)</p></div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-primary-dark text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-md"><ion-icon name="mail-outline" class="text-2xl"></ion-icon></div>
-                                <div><h4 class="font-bold text-lg">Email</h4><p class="text-gray-600">koc.originalbliss@gmail.com</p></div>
-                            </div>
-                        </div>
+        <!-- ===== Maps & Kontak ===== -->
+        <section id="kontak" class="py-24 bg-gray-100 border-t">
+            <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl font-extrabold text-gray-900 mb-8 tracking-tight">Kunjungi Workshop Kami</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4"><div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-md"><ion-icon name="location-outline" class="text-2xl"></ion-icon></div><div><h4 class="font-bold text-lg">Alamat Workshop</h4><p class="text-gray-600">Jl. Babakan Tarogong No. 399/196 B, RT. 06 RW. 04, Bandung, Jawa Barat 40232</p></div></div>
+                        <div class="flex items-start space-x-4"><div class="w-12 h-12 bg-whatsapp text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-md"><ion-icon name="logo-whatsapp" class="text-2xl"></ion-icon></div><div><h4 class="font-bold text-lg">WhatsApp Admin</h4><p class="text-gray-600">0821-2909-1178 (Order & Konsultasi)</p></div></div>
+                        <div class="flex items-start space-x-4"><div class="w-12 h-12 bg-primary-dark text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-md"><ion-icon name="mail-outline" class="text-2xl"></ion-icon></div><div><h4 class="font-bold text-lg">Email</h4><p class="text-gray-600">koc.originalbliss@gmail.com</p></div></div>
                     </div>
-                    <div class="rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white h-96">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.6226214276144!2d107.5912717740358!3d-6.935626467889691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e91997c1b277%3A0xf70f9bd12533ec08!2sKOC%20Official%20Store!5e0!3m2!1sid!2sid!4v1773833961355!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                </div>
+                <div class="rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white h-96">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.6226214276144!2d107.5912717740358!3d-6.935626467889691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e91997c1b277%3A0xf70f9bd12533ec08!2sKOC%20Official%20Store!5e0!3m2!1sid!2sid!4v1773833961355!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- ===== Footer ===== -->
-    <footer class="bg-gray-950 text-gray-500 py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-3xl font-black text-white mb-4">KOC<span class="text-primary">.</span></h3>
-            <p class="text-sm mb-10 max-w-lg mx-auto">Konveksi spesialis pakaian olahraga muslimah premium berbasis di Bandung. Melayani pengiriman ke seluruh Indonesia.</p>
-            <div class="flex justify-center space-x-6 mb-10 text-2xl">
-                <a href="#" class="text-gray-400 hover:text-primary transition"><ion-icon name="logo-instagram"></ion-icon></a>
-                <a href="#" class="text-gray-400 hover:text-primary transition"><ion-icon name="logo-facebook"></ion-icon></a>
-                <a href="#" class="text-gray-400 hover:text-primary transition"><ion-icon name="logo-tiktok"></ion-icon></a>
-            </div>
-            <div class="border-t border-white/5 pt-10 text-[10px] uppercase tracking-[0.2em]">
-                &copy; <span id="current-year"></span> KOC Originalbliss Bandung. Dibuat dengan bangga di Indonesia.
-            </div>
+    <footer class="bg-gray-950 text-gray-500 py-16 text-center">
+        <div class="container mx-auto px-4 uppercase tracking-widest text-[10px]">
+            <h3 class="text-3xl font-black text-white mb-4 tracking-normal lowercase">KOC<span class="text-primary">.</span></h3>
+            <p class="mb-8 tracking-normal capitalize">Konveksi pakaian olahraga muslimah premium di Bandung.</p>
+            <div class="flex justify-center space-x-6 mb-10 text-2xl"><a href="#" class="hover:text-white transition"><ion-icon name="logo-instagram"></ion-icon></a><a href="#" class="hover:text-white transition"><ion-icon name="logo-facebook"></ion-icon></a><a href="#" class="hover:text-white transition"><ion-icon name="logo-tiktok"></ion-icon></a></div>
+            &copy; <span id="current-year"></span> KOC Originalbliss Bandung.
         </div>
     </footer>
 
     <!-- ===== Galeri Modal ===== -->
     <div id="gallery-modal" class="fixed inset-0 z-[100] hidden bg-black/90 flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-6xl max-h-[90vh] rounded-[2rem] overflow-hidden flex flex-col relative">
-            <div class="p-8 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white z-20">
-                <div><h3 id="modal-title" class="text-3xl font-black text-gray-900 tracking-tight">Kategori Galeri</h3></div>
-                <button onclick="closeGallery()" class="text-4xl text-gray-400 hover:text-gray-900 transition"><ion-icon name="close-outline"></ion-icon></button>
-            </div>
+            <div class="p-8 border-b flex justify-between items-center sticky top-0 bg-white z-20"><div><h3 id="modal-title" class="text-3xl font-black text-gray-900 tracking-tight">Galeri</h3></div><button onclick="closeGallery()" class="text-4xl text-gray-400 hover:text-gray-900 transition"><ion-icon name="close-outline"></ion-icon></button></div>
             <div class="p-8 overflow-y-auto"><div id="modal-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div></div>
-            <div class="p-6 bg-gray-50 border-t border-gray-100 text-center">
-                <a id="modal-cta" href="https://wa.me/6282129091178" target="_blank" class="inline-flex items-center bg-whatsapp text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition"><ion-icon name="logo-whatsapp" class="mr-2 text-xl"></ion-icon> Konsultasi Pesanan</a>
-            </div>
+            <div class="p-6 bg-gray-50 border-t text-center"><a id="modal-cta" href="https://wa.me/6282129091178" target="_blank" class="inline-flex items-center bg-whatsapp text-white font-bold py-4 px-10 rounded-full shadow-lg"><ion-icon name="logo-whatsapp" class="mr-2 text-xl"></ion-icon> Konsultasi Pesanan</a></div>
         </div>
     </div>
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Mobile Menu
         const menuBtn = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.onclick = () => mobileMenu.classList.toggle('hidden');
+        document.querySelectorAll('#mobile-menu a').forEach(link => link.onclick = () => mobileMenu.classList.add('hidden'));
 
-        // Close menu on click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.onclick = () => mobileMenu.classList.add('hidden');
-        });
-
-        // Testimonial Slider logic
+        // Testimonial logic
         let currentSlide = 0;
         const slider = document.getElementById('testimonial-slider');
         const testimonialItems = document.querySelectorAll('.testimonial-item');
@@ -499,15 +460,20 @@
             const totalSlides = Math.ceil(testimonialItems.length / itemsPerView);
             
             if (currentSlide >= totalSlides) currentSlide = 0;
-            const offset = currentSlide * 100;
-            slider.style.transform = `translateX(-${offset}%)`;
+            
+            const slideWidth = slider.offsetWidth;
+            slider.scrollTo({
+                left: currentSlide * slideWidth,
+                behavior: 'smooth'
+            });
+            
             currentSlide++;
         }
         
-        setInterval(updateSlider, 5000);
-        window.addEventListener('resize', () => { currentSlide = 0; updateSlider(); });
+        let slideInterval = setInterval(updateSlider, 5000);
+        slider.addEventListener('touchstart', () => clearInterval(slideInterval));
 
-        // Function to toggle custom text field for "Lainnya"
+        // Toggle custom text field for "Lainnya"
         window.toggleCustomField = (selectId, containerId) => {
             const select = document.getElementById(selectId);
             const container = document.getElementById(containerId);
@@ -518,11 +484,16 @@
             }
         };
 
-        // Form Logic
-        document.getElementById('orderForm').onsubmit = (e) => {
+        // NEW FORM SUBMIT LOGIC
+        document.getElementById('orderForm').onsubmit = async (e) => {
             e.preventDefault();
             
-            // Get values, check for "Lainnya"
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<ion-icon name="sync-outline" class="animate-spin text-2xl mr-2"></ion-icon> <span>Mengunggah Desain...</span>`;
+
             let modelValue = document.getElementById('produk').value;
             if (modelValue === 'Lainnya') {
                 modelValue = document.getElementById('produk_lainnya').value || 'Model Lainnya';
@@ -534,8 +505,27 @@
             }
 
             const fileInput = document.getElementById('desain');
-            const fileMsg = fileInput.files.length > 0 ? fileInput.files[0].name : "Tidak ada file";
-            
+            let imageUrl = "Tidak ada file";
+
+            if (fileInput.files.length > 0) {
+                const formData = new FormData();
+                formData.append("image", fileInput.files[0]);
+                
+                try {
+                    const response = await fetch("https://api.imgbb.com/1/upload?key=6955d760fed31ee738b8f9f39fb07444", {
+                        method: "POST",
+                        body: formData
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        imageUrl = data.data.url; 
+                    }
+                } catch (error) {
+                    console.error("Upload gagal:", error);
+                    alert("Gagal mengunggah gambar, mencoba mengirim tanpa gambar...");
+                }
+            }
+
             const text = `Halo Admin KOC, saya ingin mengajukan penawaran:\n\n` +
                          `*1. Nama:* ${document.getElementById('nama').value}\n` +
                          `*2. Grup:* ${document.getElementById('komunitas').value}\n` +
@@ -546,28 +536,30 @@
                          `*7. Qty:* ${document.getElementById('jumlah').value} pcs\n` +
                          `*8. Deadline:* ${document.getElementById('tanggal').value}\n` +
                          `*9. Kota:* ${document.getElementById('alamat').value}\n` +
-                         `*10. Desain:* ${fileMsg}\n` +
+                         `*10. Link Desain:* ${imageUrl}\n` +
                          `*11. Catatan:* ${document.getElementById('catatan').value}\n\n` +
-                         `_Melampirkan file referensi di chat ini._`;
+                         `_Mohon segera diproses ya Min, terima kasih!_`;
 
             window.open(`https://wa.me/6282129091178?text=${encodeURIComponent(text)}`, '_blank');
+            
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
         };
 
-        // Gallery Data
         const galleries = {
             persit: { title: "Tunik Muslimah Persit", images: ["https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=400", "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=400", "https://images.unsplash.com/photo-1571513722275-4b41940f54b8?q=80&w=400", "https://images.unsplash.com/photo-1525547710722-396a9ce60a7c?q=80&w=400"] },
             senam: { title: "Setelan Senam Muslimah", images: ["https://images.unsplash.com/photo-1483721310020-03333e577078?q=80&w=400", "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400", "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400", "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=400"] },
             corporate: { title: "Olahraga Gathering", images: ["https://images.unsplash.com/photo-1518611012118-2969c63700b7?q=80&w=400", "https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=400", "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400", "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=400"] }
         };
 
-        window.openGallery = function(cat) {
+        window.openGallery = (cat) => {
             const data = galleries[cat];
             document.getElementById('modal-title').innerText = data.title;
             const grid = document.getElementById('modal-grid');
             grid.innerHTML = '';
             data.images.forEach(src => {
                 const div = document.createElement('div');
-                div.className = 'aspect-square rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-gray-200';
+                div.className = 'aspect-square rounded-2xl overflow-hidden bg-gray-100 border';
                 div.innerHTML = `<img src="${src}" class="w-full h-full object-cover">`;
                 grid.appendChild(div);
             });
@@ -580,7 +572,6 @@
             document.body.style.overflow = '';
         };
 
-        // Scroll animations
         const obs = new IntersectionObserver((e) => {
             e.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
         }, { threshold: 0.1 });
